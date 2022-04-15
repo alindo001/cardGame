@@ -10,7 +10,8 @@ fetch("https://www.deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1")
       .catch(err => {
           console.log(`error ${err}`)
       });
-
+let player1Score = Number(0)
+let player2Score = Number(0)
 
 document.querySelector('button').addEventListener('click', drawTwo)
 
@@ -26,20 +27,29 @@ fetch(url)
   document.querySelector('#player2').src = data.cards[1].image
   let player1Val = convertToNum(data.cards[0].value)
   let player2Val = convertToNum(data.cards[1].value)
+  let remaining = Number(data.remaining)
   if(player1Val > player2Val){
     document.querySelector('h3').innerText = "Player 1 Wins!"
-
+    player1Score +=2
+    document.querySelector('.player1Score').innerText = player1Score
+   
   }else if(player1Val < player2Val){
-    document.querySelector('h3').innerText = "Player 2 Wins!"
+    document.querySelector('h3').innerText ="Player 2 Wins!"
+    player2Score +=2
+    document.querySelector('.player2Score').innerText = player2Score
   }else{
     document.querySelector('h3').innerText = "Time For War"
-  }
+    
+    
+  }document.querySelector('h4').innerText = remaining
 })
 .catch(err => {
     console.log(`error ${err}`)
 });
 
 }
+
+
 
 function convertToNum(val){
   if(val==="ACE"){
