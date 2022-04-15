@@ -32,16 +32,23 @@ fetch(url)
     document.querySelector('h3').innerText = "Player 1 Wins!"
     player1Score +=2
     document.querySelector('.player1Score').innerText = player1Score
-   
+            
   }else if(player1Val < player2Val){
     document.querySelector('h3').innerText ="Player 2 Wins!"
     player2Score +=2
     document.querySelector('.player2Score').innerText = player2Score
   }else{
     document.querySelector('h3').innerText = "Time For War"
-    
-    
-  }document.querySelector('h4').innerText = remaining
+     
+          let btn = document.createElement("button");
+          btn.innerHTML = "Click For War";
+          document.querySelector('.warButton').appendChild(btn)
+          document.getElementById("dealButton").disabled = true;
+          
+
+          
+  }
+  document.querySelector('h4').innerText = remaining
 })
 .catch(err => {
     console.log(`error ${err}`)
