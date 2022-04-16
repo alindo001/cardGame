@@ -45,34 +45,9 @@ fetch(url)
           let btn = document.createElement("button");
           btn.innerHTML = "Click For War";
           document.querySelector('.warButton').appendChild(btn)
-          document.getElementById("dealButton").disabled = true;
-          document.querySelector('.warButton').addEventListener('click',war)
-          function war(){
-            
-            fetch(url)
-.then(res => res.json()) // parse response as JSON
-.then(data => {
-  console.log(data)
-  document.querySelector('#player1').src = data.cards[0].image
-  document.querySelector('#player2').src = data.cards[1].image
-  let player1Val = convertToNum(data.cards[0].value)
-  let player2Val = convertToNum(data.cards[1].value)
-  if(player1Val > player2Val){
-    player1Score+=8
-    document.getElementById("dealButton").disabled = false;
-    document.querySelector('.warButton').remove(btn)
-  }else if(player1Val < player2Val){
-    player2Score+=8
-    document.getElementById("dealButton").disabled = false;
-    document.querySelector('.warButton').remove(btn)
-  }
-})
-
-          }
-          
-
-          
-  }
+          document.getElementById("dealButton").disabled = true
+          document.querySelector(".warButton").addEventListener('click', war)
+        }
   document.querySelector('h4').innerText = remaining
 })
 .catch(err => {
@@ -99,3 +74,18 @@ return 12
 }
 
 
+function war(){
+  const url =`https://www.deckofcardsapi.com/api/deck/${deckId}/draw/?count=6`
+  fetch(url)
+  .then(res => res.json()) // parse response as JSON
+  .then(data => {
+    console.log(data)
+    document.querySelector('#war1').src = data.cards[0].image
+    document.querySelector('#war2').src = data.cards[1].image
+    document.querySelector('#war3').src = data.cards[2].image
+    document.querySelector('#war4').src = data.cards[3].image
+    document.querySelector('#war5').src = data.cards[4].image
+    document.querySelector('#war6').src = data.cards[5].image
+    let warPlayer1 = convertToNum(data.cards[0].value)
+    let warPlayer2 = convertToNum(data.cards[1].value)})
+}
