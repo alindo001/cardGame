@@ -71,11 +71,18 @@ fetch(url)
             if (warPlayer1> warPlayer4){
               player1Score +=8
               alert("Player 1 Wins the War")
-            }else{
+            }else if(warPlayer1 < warPlayer4){
               player2Score +=8
               alert("Player 2 Wins the War")
               
-            }
+            }else{
+              if(warPlayer2> warPlayer5){
+                player1Score +=8
+                alert("Player 1 Wins the War")
+              }else{
+                player2Score +=8
+                alert("Player 2 Wins the War")
+                }}
          })
         
       }
